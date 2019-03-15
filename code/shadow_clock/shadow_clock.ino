@@ -95,7 +95,7 @@ static void setTimePixels(int r, int g, int b, int brightness) {
 }
 
 static void syncTime() {
-  configTime(timezone_offset_secs, dst_offset_secs, "pool.ntp.org", "time.nist.gov"); // UTC
+  configTime(timezone_offset_secs, dst_offset_secs, "pool.ntp.org", "time.nist.gov");
   
   Serial.println("\nWaiting for time");
   while (!time(nullptr)) {
