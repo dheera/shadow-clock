@@ -2,7 +2,7 @@
 
 A simple 3D-printable wall clock that displays time using shadows.
 
-This was inspired by a number of similar projects [0](https://www.coroflot.com/ukeskin/Shadow-Clock) [1](https://atmelcorporation.wordpress.com/2015/10/23/shadowplay-is-like-an-arduino-powered-sundial-for-a-wall/) [2](https://solarbotics.com/product/60400/) but wanted to create something that was simpler, cheaper, and easier to assemble.
+This was inspired by a number of similar projects [0](https://www.coroflot.com/ukeskin/Shadow-Clock) [1](https://atmelcorporation.wordpress.com/2015/10/23/shadowplay-is-like-an-arduino-powered-sundial-for-a-wall/) [2](https://solarbotics.com/product/60400/) but I wanted to create something that was simpler, cheaper, and easier to assemble now that we have these amazing individually-addressable LED strips that take only 3 wires to connect.
 
 ![Picture](https://raw.githubusercontent.com/dheera/shadow-clock/master/picture.jpg "Picture")
 
