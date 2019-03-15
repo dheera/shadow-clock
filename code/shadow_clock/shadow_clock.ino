@@ -2,12 +2,16 @@
 #include <ESP8266WiFi.h>
 #include <time.h>
 
-#define PIN      5
-#define N_LEDS 60
+#define PIN 5     // the data pin from the Wemos D1 Mini used for the NeoPixel strip
+#define N_LEDS 60 // don't change this
 
-const char* ssid = "YOURSSIDHERE";
+const char* ssid     = "YOURSSIDHERE";
 const char* password = "YOURPASSWORDHERE";
-const char* host     = "time.nist.gov";   
+const char* host     = "time.nist.gov";
+
+// UTC timezone -- change it to yours if you wish
+const int timezone_offset_secs = 0;
+const int dst_offset_secs = 0;
 
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(N_LEDS, PIN, NEO_GRB + NEO_KHZ800);
 
@@ -40,9 +44,9 @@ int count = 0;
 
 void loop() {
 
-  count++;
-  if(count >= 3600) {
-    count=0;
+  // re-sync to the atomic clock every 1 hour
+  count = (count + 1) % 3600;
+  if(count == 0) {
     syncTime();
   }
 
@@ -56,23 +60,10 @@ void loop() {
   m = timeinfo->tm_min;
   s = timeinfo->tm_sec;
 
-  if(h>=7 && h<=14) {
-    brightness = 10;
-  } else {
-    brightness = 255;
-  }
+  brightness = 255;
   
   setTimePixels((h%12)*5 + (m*5/60), m ,s, brightness);
-  /*
-  s = s + 1;
-  if(s>=60) {
-    m+=1;
-    s=0;
-  }
-  if(m>=60) {
-    h=(h+1)%12;
-    m=0;
-  }*/
+
   delay(1000);
 }
 
@@ -104,7 +95,7 @@ static void setTimePixels(int r, int g, int b, int brightness) {
 }
 
 static void syncTime() {
-  configTime(0, 0, "pool.ntp.org", "time.nist.gov"); // UTC
+  configTime(timezone_offset_secs, dst_offset_secs, "pool.ntp.org", "time.nist.gov"); // UTC
   
   Serial.println("\nWaiting for time");
   while (!time(nullptr)) {
