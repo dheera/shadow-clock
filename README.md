@@ -22,6 +22,10 @@ This was inspired by a number of similar projects [0](https://www.coroflot.com/u
 
 ## Assembly
 
+Soldering to the flexible strip's contacts can be tricky but assembly is otherwise pretty straightforward. The one thing to make sure of is that you properly cut off the contacts on the last LED so that it doesn't send signals going back around the clock indefinitely.
+
+You'll need to use glue to fix clock-small-back to clock-small-front. If you're printing with PETGThe Wemos D1 Mini V2 should snap into the bracket on the back. Once you have the strip mounted you can then use some lighter adhesive to affix clock-small-face in case you need to remove it later.
+
 ![Picture](https://raw.githubusercontent.com/dheera/shadow-clock/master/assembly0.jpg "Picture")
 ![Picture](https://raw.githubusercontent.com/dheera/shadow-clock/master/assembly1.jpg "Picture")
 ![Picture](https://raw.githubusercontent.com/dheera/shadow-clock/master/assembly2.jpg "Picture")
